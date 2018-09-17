@@ -1,23 +1,20 @@
 const todosController = require('../controllers').todos;
 const todoItemsController = require('../controllers').todoItems;
+const IndicatorController = require('../controllers').indicator;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Todos API!',
+    message: 'Bem vindo a indicators api',
   }));
 
-  app.post('/api/todos', todosController.create);
-  app.get('/api/todos', todosController.list);
-  app.get('/api/todos/:todoId', todosController.retrieve);
-  app.put('/api/todos/:todoId', todosController.update);
-  app.delete('/api/todos/:todoId', todosController.destroy);
+  app.post('/api/indicator', IndicatorController.create);
+  app.get("/api/indicator", IndicatorController.list);
+  app.get("/api/indicator/:indicatorId", IndicatorController.retrieve);
+  app.put("/api/indicator/:indicatorId", IndicatorController.update);
+  app.delete("/api/indicator/:indicatorId", IndicatorController.destroy);
 
-  app.post('/api/todos/:todoId/items', todoItemsController.create);
-  app.put('/api/todos/:todoId/items/:todoItemId', todoItemsController.update);
-  app.delete(
-    '/api/todos/:todoId/items/:todoItemId', todoItemsController.destroy
-  );
-  app.all('/api/todos/:todoId/items', (req, res) => res.status(405).send({
-    message: 'Method Not Allowed',
+
+  app.all('/api/indicator/:indicatorId/indicators', (req, res) => res.status(405).send({
+    message: 'metodo não permitido',
   }));
 };
