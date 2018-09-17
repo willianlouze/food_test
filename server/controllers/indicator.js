@@ -1,5 +1,3 @@
-const Todo = require('../models').Todo;
-const TodoItem = require('../models').TodoItem;
 const Indicator = require('../models').Indicator;
 
 module.exports = {
@@ -66,12 +64,12 @@ module.exports = {
     },
 
     destroy(req, res) {
-        return Todo
+        return Indicator
             .findById(req.params.indicatorId)
             .then(indicator => {
                 if (!indicator) {
                     return res.status(400).send({
-                        message: 'Todo Not Found',
+                        message: 'Indicador não encontrado',
                     });
                 }
                 return indicator
