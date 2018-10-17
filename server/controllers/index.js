@@ -1,5 +1,5 @@
-const indicator = require('./indicator');
+const food = require('./food')
 
 module.exports = {
-  indicator
+  food
 };
